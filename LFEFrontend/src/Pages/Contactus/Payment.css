@@ -93,7 +93,8 @@
 
 /* Section 2 info */
 .section2info {
-  padding: 3rem;
+  padding: 6rem;
+   padding-bottom: 8rem; /* Increased bottom space for footer breathing room */
 }
 
 /* Section title */
