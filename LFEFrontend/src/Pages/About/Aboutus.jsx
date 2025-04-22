@@ -96,32 +96,37 @@ const Aboutus = () => {
 
       <section>
         <div className="container">
-          <div className="row">
-            <div className="Team-heading">
+          <div className="row justify-content-center">
+            <div className="col-12 Team-heading text-center mb-4">
               <h4>Founder</h4>
               <h1>
                 Pillar of <span>Our</span> success
               </h1>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-              {copartner.map((partner, index) => (
-                <div className="col-md-6 mt-2" key={index} >
-                  <div className="card2">
-                    <div className="partner-box">
-                      <img src={partner.image} alt="Memberimg" />
-                    </div>
-                    <div className="partner">
-                      <h2>{partner.name}</h2>
-                      <h6>{partner.role}</h6>
-                      <p>{partner.des}</p>
-                    </div>
+
+            {copartner.map((partner, index) => (
+              <div className="col-12 col-md-8 col-lg-6 mb-4" key={index}>
+                <div className="card2 text-center">
+                  <div className="partner-box">
+                    <img
+                      src={partner.image}
+                      alt="Founder"
+                      className="img-fluid"
+                      style={{ maxHeight: "300px", objectFit: "cover" }}
+                    />
+                  </div>
+                  <div className="partner mt-3">
+                    <h2>{partner.name}</h2>
+                    <h6>{partner.role}</h6>
+                    <p>{partner.des}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
 
       <section>
         <div className="container">
