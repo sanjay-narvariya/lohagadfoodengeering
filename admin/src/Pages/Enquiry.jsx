@@ -1,0 +1,164 @@
+import React, { useState, useEffect } from 'react';
+import { getData, postData, serverURL } from "../services/FetchNodeAdminServices";
+import { FaTrashAlt } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+export default function Enquiry() {
+    const [enquiryList, setEnquiryList] = useState([]);
+    const navigate = useNavigate();
+
+const fetchAllEnquiry = async (showAlert = true) => {
+        try {
+            const result = await getData('enquiry/get-all-enquiry');
+            if (result.status) {
+                setEnquiryList(result.data.enquiry);
+            } else if (showAlert) {
+                alert(result.message || "Failed to fetch enquiries.");
+            }
+        } catch (error) {
+            if (showAlert) {
+                alert("Something went wrong while fetching enquiries.");
+            }
+            console.error("Fetch error:", error);
+        }
+    };
+
+    
+    useEffect(() => {
+        fetchAllEnquiry();
+    }, []);
+
+    // 🔁 Refresh page on focus
+    useEffect(() => {
+        const handleFocus = () => {
+            fetchAllEnquiry(false); // alert disabled during focus
+        };
+
+        window.addEventListener("focus", handleFocus);
+        return () => {
+            window.removeEventListener("focus", handleFocus);
+        };
+    }, []);
+
+    const reversedEnquiries = [...enquiryList].reverse(); // Latest on top
+
+    const enquiryDelete = async (item) => {
+        const result = await postData(`enquiry/delete-enquiry/${item}`, {});
+        if (result) {
+            alert('Delete enquiry successfully.....');
+            setTimeout(() => navigate('/enquiry'), 2000);
+        } else {
+            alert('Not Delete enquiry .....');
+        }
+        fetchAllEnquiry();
+    };
+
+    const deleteAllEnquiries = async () => {
+        const result = await getData('enquiry/deleteEnquiry', {});
+        if (result.status) {
+            alert("All enquiries deleted!");
+            setTimeout(() => navigate('/enquiry'), 2000);
+            window.location.reload();
+        } else {
+            alert("Failed to delete enquiries.");
+        }
+    };
+
+    const downloadPDF = () => {
+        const doc = new jsPDF();
+        doc.setFontSize(16);
+        doc.text("Enquiry List", 14, 15);
+
+        const tableColumn = ["#", "Name", "Email", "Phone", "Address", "Comment", "Created At"];
+        const tableRows = [];
+
+        reversedEnquiries.forEach((item, index) => {
+            const rowData = [
+                index + 1,
+                item.name || "-",
+                item.email || "-",
+                item.phone || "-",
+                item.address || "-",
+                item.comment || "-",
+                new Date(item.createdAt).toLocaleString(),
+            ];
+            tableRows.push(rowData);
+        });
+
+        doc.autoTable({
+            head: [tableColumn],
+            body: tableRows,
+            startY: 25,
+            styles: { fontSize: 9 },
+        });
+
+        doc.save("Enquiry_List.pdf");
+    };
+
+    return (
+        <div className="container mt-5">
+            <div className="card shadow-lg border-0 rounded-lg">
+                <div className="card-header bg-primary text-light d-flex justify-content-between align-items-center">
+                    <h5 className="mb-0">Enquiries</h5>
+
+                    <button className="btn btn-danger btn-sm" onClick={deleteAllEnquiries}>
+                        🗑️ Delete All Enquiries
+                    </button>
+
+                    <button className="btn btn-light btn-sm" onClick={downloadPDF}>
+                        📄 Download PDF
+                    </button>
+                </div>
+                <div className="card-body">
+                    <div className="table-responsive">
+                        <table className="table table-hover table-bordered text-center align-middle">
+                            <thead className="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Order-Detail</th>
+                                    <th>Created At</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {reversedEnquiries.map((item, index) => {
+                                    const createdAt = new Date(item.createdAt).toLocaleString();
+                                    return (
+                                        <tr key={item._id}>
+                                            <td>{index + 1}</td>
+                                            <td>{item.name || "-"}</td>
+                                            <td>{item.email || "-"}</td>
+                                            <td>{item.phone || "-"}</td>
+                                            <td>{item.address || "-"}</td>
+                                            <td>{item.comment || "-"}</td>
+                                            <td>{createdAt}</td>
+                                            <td>
+                                                <button className="btn btn-sm btn-danger" onClick={() => enquiryDelete(item._id)}>
+                                                    <FaTrashAlt className="fs-5" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                                {reversedEnquiries.length === 0 && (
+                                    <tr>
+                                        <td colSpan="8">No enquiries found.</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p className="text-muted mt-2 d-block d-md-none" style={{ fontSize: '0.9rem' }}>
+                        👉 Swipe left/right to view more columns
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+}
