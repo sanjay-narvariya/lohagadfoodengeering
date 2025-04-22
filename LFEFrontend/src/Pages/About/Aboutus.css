@@ -1,5 +1,4 @@
-
-
+/* ---------------- ABOUT SECTION ------------------ */
 .aboutinfo {
   padding: 3rem;
   text-align: center;
@@ -26,7 +25,7 @@
   text-align: left;
 }
 
-
+/* ---------------- TEAM HEADING ------------------ */
 .Team-heading {
   margin-top: 2rem !important;
   text-align: center;
@@ -47,39 +46,37 @@
   color: var(--dark-yellow);
 }
 
+/* ---------------- FOUNDER CARD (card2) ------------------ */
 .card2 {
   width: 100%;
   border-radius: 8px;
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: column; /* Ensures content stacks vertically */
-  align-items: center; /* Centers the content horizontally */
-  background-color: #f9f9f9; /* Optional: Background color for card */
-  padding: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better appearance */
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .partner-box {
-  width: 250px; /* Set size for the circular image frame */
-  height: 300px; /* Ensure the frame is a perfect circle */
-  border-radius: 50%; /* Makes the frame circular */
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
   overflow: hidden;
   display: flex;
-  justify-content: center; /* Centers the image horizontally */
-  align-items: center; /* Centers the image vertically */
-  background-color: #ddd; /* Optional: Placeholder background color */
-  margin-bottom: 1rem; /* Space below the image */
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  margin-bottom: 1rem;
 }
 
 .partner-box img {
-  width: 100%; /* Fit the image within the circular frame */
-  height: 100%; /* Stretch to fill the frame */
-  object-fit: cover; /* Ensures the image covers the frame without distortion */
-}
-
-.partner {
-  text-align: center; /* Centers the text */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .partner h2 {
@@ -96,124 +93,14 @@
 }
 
 .partner p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #777;
-  line-height: 1.5;
+  line-height: 1.6;
+  max-width: 90%;
+  margin: auto;
 }
 
-
-
-.card1 {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-}
-
-.card1 .image-box {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-
-.card1 .image-box {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.card1 .image-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image covers the full card */
-  transition: 0.5s ease-in-out;
-}
-
-.card1 .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  opacity: 0; /* Start with the text hidden */
-  transform: translateY(20px); /* Initially position the text below */
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.card1:hover .content {
-  opacity: 1; /* Fade in text on hover */
-  transform: translate(-50%, -50%) translateY(0); /* Center and bring text into view */
-}
-
-.card1:hover img {
-  filter: grayscale(1) brightness(0.4); /* Image effect on hover */
-}
-
-/* Optionally remove border effect if you no longer need it */
-.card1::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  opacity: 0;
-  transition: 0.4s ease-in-out;
-}
-
-/* Text hover animation */
-.card1:hover .content h2,
-.card1:hover .content h6 {
-  opacity: 1;
-  transform: translateY(0); /* Bring text into view */
-}
-
-@media (max-width: 768px) {
-  .aboutinfo {
-    padding: 1rem;
-  }
-
-  .abouttitle h1 {
-    font-size: 1.2rem;
-  }
-
-  .abouttitle p {
-    font-size: 0.9rem;
-  }
-
-  .partner-box {
-    width: 100px; /* Set size for the circular image frame */
-  }
-
-  .partner-box img {
-    width: 100%;
-    height: 100%;
-  }
-
-
-  .Team-heading h1 {
-    font-size: 1.3rem;
-  }
-
-  .Team-heading h4 {
-    font-size: 1rem;
-  }
-
-  .card1 {
-    aspect-ratio: 1 / 0.9;
-    width: 60%;
-    margin: auto;
-  }
-
-  .card2 {
-    aspect-ratio: 1 / 0.9;
-  }
-}
-
-/************************************************************************************/
-
+/* ---------------- TEAM MEMBER CARD (card1) ------------------ */
 .card1 {
   width: 100%;
   border-radius: 8px;
@@ -256,23 +143,18 @@
   filter: grayscale(1) brightness(0.4);
 }
 
-/* Heading styles already present and reused */
-.Team-heading h4,
-.Team-heading h1 span {
-  color: var(--dark-yellow);
-}
-
-.Team-heading h1 {
-  font-weight: bold;
-  color: black;
-}
-
-/* Responsive tweaks */
+/* ---------------- RESPONSIVE ------------------ */
 @media (max-width: 768px) {
-  .card1 {
-    aspect-ratio: 1 / 1.2;
-    width: 50%;
-    margin: auto;
+  .aboutinfo {
+    padding: 1rem;
+  }
+
+  .abouttitle h1 {
+    font-size: 1.2rem;
+  }
+
+  .abouttitle p {
+    font-size: 0.9rem;
   }
 
   .Team-heading h1 {
@@ -283,11 +165,57 @@
     font-size: 1rem;
   }
 
+  .card1 {
+    aspect-ratio: 1 / 1.2;
+    width: 50%;
+    margin: auto;
+  }
+
   .card1 .content h2 {
     font-size: 1.1rem;
   }
 
   .card1 .content h6 {
     font-size: 0.9rem;
+  }
+
+  .card2 {
+    padding: 1rem;
+  }
+
+  .partner-box {
+    width: 140px;
+    height: 140px;
+  }
+
+  .partner h2 {
+    font-size: 1.2rem;
+  }
+
+  .partner h6 {
+    font-size: 0.95rem;
+  }
+
+  .partner p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-box {
+    width: 110px;
+    height: 110px;
+  }
+
+  .partner h2 {
+    font-size: 1rem;
+  }
+
+  .partner h6 {
+    font-size: 0.85rem;
+  }
+
+  .partner p {
+    font-size: 0.8rem;
   }
 }
