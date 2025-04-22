@@ -1,0 +1,179 @@
+/* Animation keyframes */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Default state before animation starts */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px); /* fallback for smoother animation pre-state */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  visibility: hidden; /* Make element invisible until animation starts */
+}
+
+/* Activated animation state */
+.animate.slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.animate.slide-in-bottom {
+  animation: slideInBottom 1s ease-out forwards;
+}
+
+.animate.slide-in-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+/* This will ensure the element is visible after the animation is complete */
+.animate-on-scroll.visible {
+  visibility: visible; /* Make the element visible after animation */
+  opacity: 1; /* Ensure it is fully opaque */
+  transform: translateY(0); /* Ensure it has finished the animation */
+}
+
+/* Section Heading */
+.formhead h2 {
+  text-align: center;
+  color: black;
+  margin-top: 2rem !important;
+}
+
+/* Form Section */
+.contact-form-section {
+  background: linear-gradient(90deg, #4d2a38 0%, #a36d93 100%);
+  border-radius: 10px;
+  padding: 0rem 3rem;
+  margin: 1rem 0;
+}
+
+/* Contact Info Box */
+.contact-info-page {
+  padding: 2rem;
+  border: none;
+}
+
+.info-box {
+  background: radial-gradient(circle at 10% 20%, #3a8cc1 0%, #8a7edf 90%);
+  color: rgb(176, 100, 100);
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover effect on info-box */
+.info-box:hover {
+  transform: scale(1.03);
+  background-color: hwb(338 3% 32%) !important; /* New background color */
+  color: rgb(196, 43, 43); /* Change text color */
+}
+
+/* Change text color when hovering the anchor tag */
+.info-box a:hover p {
+  color: red; /* Change the text color inside <p> when anchor is hovered */
+}
+
+/* Icon styling */
+.info-box .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: inherit; /* Inherit color from the parent (info-box) */
+}
+
+/* Anchor link styling */
+.info-box a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black; /* Default text color */
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for anchor link */
+.info-box a:hover {
+  color: #d42929; /* Change the link text color to white on hover */
+}
+
+
+.info-box .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.info-box a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+/* Submit Button */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.submit-btn {
+  background-color: var(--dark-blue, #004080);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #003366;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .info-box {
+    margin-bottom: 20px;
+  }
+
+  .contact-form-section {
+    padding: 0;
+  }
+
+  .form-container {
+    padding: 10px;
+  }
+}

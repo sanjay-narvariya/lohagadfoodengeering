@@ -1,0 +1,167 @@
+/* Equipment Main Container */
+.RentalEquipment {
+  margin-top: 0rem;
+  background: linear-gradient(136deg, #fff7e6, #ffe6f0, #e6f7ff);
+  background-size: 400% 400%;
+  animation: gradientBG 30s ease infinite;
+  border-radius: 1rem;
+}
+
+/* Gradient Animation */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Title Section */
+.equipment-title {
+  text-align: center;
+  padding: 1rem;
+}
+
+.equipment-title h3 {
+  color: var(--dark-yellow);
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.equipment-title h1 {
+  color: black;
+  font-weight: bold;
+}
+
+.equipment-title p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  width: 50%;
+  margin: auto;
+}
+
+/* Auto Scrolling Section */
+.equipment-slider {
+  overflow: hidden;
+  width: 108%;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.equipment-track {
+  display: flex;
+  gap: 1rem;
+  animation: scrollCards 60s linear infinite;
+  width: max-content;
+}
+
+
+.equipment-track:hover {
+  animation-play-state: paused;
+}
+
+
+@keyframes scrollCards {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.equipment-card-wrapper {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.equipment-card {
+  width: 1200px;
+  height: 220px;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 60s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.equipment-card:hover {
+  transform: translateY(-5px);
+}
+
+.equipment-img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.1);
+}
+
+/* Card Title */
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1500px) {
+  .equipment-title p {
+    width: 80%;
+  }
+  .equipment-card {
+    width: 400px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .equipment-title p {
+    width: 90%;
+  }
+  .equipment-card {
+    width: 220px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .equipment-title p {
+    width: 95%;
+  }
+  .equipment-card {
+    width: 180px;
+    height: 180px;
+  }
+  .card-title {
+    font-size: 1rem;
+  }
+}
+

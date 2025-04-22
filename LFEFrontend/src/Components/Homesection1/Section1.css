@@ -1,0 +1,127 @@
+:root {
+  --dark-blue: #003366;
+}
+
+/* Branding section */
+.branding-bar {
+  text-align: center;
+  padding: 0.3rem 0.1rem;
+  border-bottom: 0.2px #ffffffa3;
+  background-color: #ffffffa3;
+}
+
+.branding-bar h1,
+.branding-bar h4 {
+  margin: 0;
+  color: var(--dark-blue);
+  font-weight: 700;
+}
+
+.branding-bar h1 {
+  font-size: 1.4rem;
+}
+
+.branding-bar h4 {
+  font-size: 1rem;
+}
+
+/* Sticky navbar */
+.navbg {
+  background-color: hsla(207, 47%, 38%, 0.992);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Navbar layout */
+.navsection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  position: relative;
+}
+
+/* Menu icon for mobile */
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--dark-blue);
+}
+
+/* Links container */
+.navlinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: all 0.3s ease;
+}
+
+.link {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.link li a {
+  position: relative;
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-weight: 600;
+  padding: 5px 0;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.link li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #f50707;
+  transition: width 0.3s ease;
+}
+
+.link li a:hover::after,
+.link li.active a::after {
+  width: 100%;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .navlinks {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: #ffffffec;
+    padding: 1rem 0;
+    z-index: 999;
+  }
+
+  .navlinks.active {
+    display: flex;
+  }
+
+  .link {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
