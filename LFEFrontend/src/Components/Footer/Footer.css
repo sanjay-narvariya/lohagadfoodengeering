@@ -63,6 +63,9 @@
 /* Social Icons */
 .socialicon {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center on desktop */
 }
 
 .socialicon h3 {
@@ -73,6 +76,7 @@
 .iconlink {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center; /* Center on desktop */
   gap: 12px;
   margin-top: 0.5rem;
 }
@@ -258,6 +262,10 @@
     text-align: center;
     margin: 1rem 0;
   }
+
+  .iconlink {
+    justify-content: center;
+  }
 }
 
 /* Mobile */
@@ -303,5 +311,10 @@
   .footer-page-link {
     font-size: 0.9rem;
     line-height: 32px;
+  }
+
+  .iconlink {
+    justify-content: flex-start;
+    margin-top: 0.5rem;
   }
 }
