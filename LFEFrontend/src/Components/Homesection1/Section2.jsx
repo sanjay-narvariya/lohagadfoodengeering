@@ -39,7 +39,7 @@ const Section2 = () => {
                     <div style={{ color: 'red', fontSize: '1.5rem' }}>Mohalle ki yaari, Brajesh ki chai sab pe bhaari ! 😄!</div>
                   </p>
                 </div>
-                <div className="section2list" style={{ marginTop: '130px', marginRight: '1px' }}>
+                <div className="section2list" style={{ marginTop: '10px', marginRight: '1px' }}>
                   <div className="section2img">
                     <img
                       src={Truck1}
