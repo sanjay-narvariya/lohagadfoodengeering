@@ -9,7 +9,6 @@
     opacity: 1;
   }
 }
-
 @keyframes slideInBottom {
   from {
     transform: translateY(100px);
@@ -20,7 +19,6 @@
     opacity: 1;
   }
 }
-
 @keyframes slideInRight {
   from {
     transform: translateX(100px);
@@ -35,29 +33,27 @@
 /* Default state before animation starts */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px); /* fallback for smoother animation pre-state */
+  transform: translateY(30px);
   transition: opacity 0.5s ease, transform 0.5s ease;
-  visibility: hidden; /* Make element invisible until animation starts */
+  visibility: hidden;
 }
 
 /* Activated animation state */
 .animate.slide-in-left {
   animation: slideInLeft 1s ease-out forwards;
 }
-
 .animate.slide-in-bottom {
   animation: slideInBottom 1s ease-out forwards;
 }
-
 .animate.slide-in-right {
   animation: slideInRight 1s ease-out forwards;
 }
 
-/* This will ensure the element is visible after the animation is complete */
+/* Make visible after animation */
 .animate-on-scroll.visible {
-  visibility: visible; /* Make the element visible after animation */
-  opacity: 1; /* Ensure it is fully opaque */
-  transform: translateY(0); /* Ensure it has finished the animation */
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Section Heading */
@@ -71,11 +67,12 @@
 .contact-form-section {
   background: linear-gradient(90deg, #4d2a38 0%, #a36d93 100%);
   border-radius: 10px;
-  padding: 0rem 3rem;
+  padding: 2rem 3rem;
   margin: 1rem 0;
+  box-sizing: border-box;
 }
 
-/* Contact Info Box */
+/* Contact Info */
 .contact-info-page {
   padding: 2rem;
   border: none;
@@ -91,45 +88,20 @@
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Hover effect on info-box */
 .info-box:hover {
   transform: scale(1.03);
-  background-color: hwb(338 3% 32%) !important; /* New background color */
-  color: rgb(196, 43, 43); /* Change text color */
+  background-color: hwb(338 3% 32%) !important;
+  color: rgb(196, 43, 43);
 }
 
-/* Change text color when hovering the anchor tag */
 .info-box a:hover p {
-  color: red; /* Change the text color inside <p> when anchor is hovered */
+  color: red;
 }
-
-/* Icon styling */
-.info-box .icon {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: inherit; /* Inherit color from the parent (info-box) */
-}
-
-/* Anchor link styling */
-.info-box a {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: black; /* Default text color */
-  transition: color 0.3s ease;
-}
-
-/* Hover effect for anchor link */
-.info-box a:hover {
-  color: #d42929; /* Change the link text color to white on hover */
-}
-
 
 .info-box .icon {
   font-size: 2rem;
   margin-bottom: 10px;
+  color: inherit;
 }
 
 .info-box a {
@@ -139,6 +111,11 @@
   justify-content: center;
   align-items: center;
   color: black;
+  transition: color 0.3s ease;
+}
+
+.info-box a:hover {
+  color: #d42929;
 }
 
 /* Submit Button */
@@ -163,17 +140,73 @@
   background-color: #003366;
 }
 
-/* Responsive Design */
+/* Form Inputs General Styling */
+.form-control {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+/* Row Spacing */
+.form-container .row {
+  margin-bottom: 10px;
+}
+
+/* Center and limit width of inputs */
+.form-container .col-md-6,
+.form-container .col-12 {
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.form-container .form-control {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Expand textarea (comment box) */
+textarea.form-control {
+  width: 100%;
+  max-width: 600px;
+  min-height: 120px;
+  resize: vertical;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .info-box {
     margin-bottom: 20px;
   }
 
   .contact-form-section {
-    padding: 0;
+    padding: 1rem;
   }
 
   .form-container {
-    padding: 10px;
+    padding: 0;
+  }
+
+  .form-container .col-md-6,
+  .form-container .col-12 {
+    width: 100%;
+    padding: 0 5px;
+    margin-bottom: 15px;
+  }
+
+  .form-container .form-control {
+    width: 100%;
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  textarea.form-control {
+    max-width: 100%;
   }
 }
