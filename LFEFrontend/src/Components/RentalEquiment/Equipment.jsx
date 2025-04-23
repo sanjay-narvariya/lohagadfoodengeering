@@ -51,7 +51,7 @@ const Equipment = () => {
         {/* Auto-scrolling Equipment Cards */}
         <div className="equipment-slider">
           <div className="equipment-track">
-            {[...categoryList,...categoryList,...categoryList,...categoryList].map((item, i) => (
+            {[...categoryList,...categoryList,...categoryList].map((item, i) => (
               <div key={i} className="equipment-card-wrapper">
                 <div className="card equipment-card">
                   <div
