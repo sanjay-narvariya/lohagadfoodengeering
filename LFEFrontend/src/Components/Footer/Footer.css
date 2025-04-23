@@ -1,4 +1,4 @@
-
+/* Base Footer Styling */
 .footerdata {
   position: relative;
   display: flex;
@@ -10,9 +10,10 @@
   background-image: url(../../Assets/bgimg.png);
   background-size: cover;
   background-position: center;
+  padding: 3rem 2rem;
 }
 
-/* Overlay for Footer Data Background */
+/* Overlay */
 .footerdata::before {
   content: "";
   position: absolute;
@@ -20,19 +21,19 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: hwb(0 37% 33% / 0.532); /* Adjust overlay color */
-  z-index: -1; /* Keeps overlay behind content */
+  background-color: hwb(0 37% 33% / 0.532);
+  z-index: -1;
   backdrop-filter: blur(1px);
 }
 
-/* Column styles */
+/* Column */
 .footerdata .col-md-4 {
   flex: 1;
   min-width: 250px;
-  margin: 2rem 0 2rem;
+  margin: 2rem 0;
 }
 
-/* Left data section */
+/* Left */
 .leftdata {
   text-align: center;
 }
@@ -42,6 +43,7 @@
   margin: 0;
   color: #981010;
 }
+
 .leftdata .websitename h4 {
   font-size: 1.2rem;
   margin: 0;
@@ -58,7 +60,7 @@
   width: 60%;
 }
 
-/* Social icons section */
+/* Social Icons */
 .socialicon {
   text-align: center;
 }
@@ -70,16 +72,17 @@
 
 .iconlink {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 0.5rem;
 }
 
 .iconlink a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   border: 2px solid hsl(0, 79%, 28%);
   border-radius: 50%;
   color: #901212;
@@ -94,68 +97,65 @@
 }
 
 .innericon {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
-/* Useful links section */
+/* Middle - Useful Links */
 .middle-data {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100%; /* Ensures it takes full height of the column */
-  }
-  
-  .middle-data .useful-links h3 {
-    font-size: 1.5em;
-    margin-bottom: 14px;
-  }
-  
-  .middle-data .useful-links ul {
-    padding: 0;
-    list-style: none;
-    margin: 0; /* Centers the links within the .middle-data */
-  }
-  
-  /* Styling individual footer page links */
-  .footer-page-link {
-    line-height: 40px;
-    position: relative;
-  }
-  
-  .footer-page-link a {
-    color: #761212;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    display: inline-block; /* Helps align underline effect */
-  }
-  
-  /* Initial state of the underline */
-  .footer-page-link a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -3px;
-    width: 0;
-    height: 2px;
-    background-color: var(--dark-yellow);
-    transition: width 0.3s ease;
-  }
-  
-  /* Hover and focus effect for color change and underline expansion */
-  .footer-page-link a:hover,
-  .footer-page-link a:focus {
-    color: var(--dark-yellow);
-  }
-  
-  .footer-page-link a:hover::after,
-  .footer-page-link a:focus::after {
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
 
-/* Contact info container */
+.middle-data .useful-links h3 {
+  font-size: 1.5em;
+  margin-bottom: 14px;
+}
+
+.middle-data .useful-links ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.footer-page-link {
+  line-height: 40px;
+  position: relative;
+}
+
+.footer-page-link a {
+  color: #761212;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.footer-page-link a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: var(--dark-yellow);
+  transition: width 0.3s ease;
+}
+
+.footer-page-link a:hover,
+.footer-page-link a:focus {
+  color: var(--dark-yellow);
+}
+
+.footer-page-link a:hover::after,
+.footer-page-link a:focus::after {
+  width: 100%;
+}
+
+/* Right - Contact */
 .right-data {
   text-align: left;
 }
@@ -170,16 +170,19 @@
   display: flex;
   align-items: center;
   margin: 10px 0;
-  padding: 5px;
+  padding: 5px 0;
+  flex-wrap: nowrap;
+  gap: 10px;
 }
 
 .mail-info .icon {
-  font-size: 2rem;
-  margin-right: 12px;
+  font-size: 1.5rem;
+  min-width: 36px;
+  min-height: 36px;
+  background-color: var(--dark-yellow);
+  padding: 6px;
   color: #941717;
   transition: color 0.3s ease, border-color 0.3s ease;
-  background-color: var(--dark-yellow);
-  padding: 8px;
 }
 
 .mail-info .icon:hover {
@@ -187,25 +190,14 @@
   border-color: var(--dark-yellow);
 }
 
-.mail {
-  display: flex;
-  flex-direction: column;
-
-}
-
 .mail-info a {
   color: #901717;
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-decoration: none;
   position: relative;
   transition: color 0.3s ease;
+  word-break: break-word;
 }
-
-.phone {
-  display: flex;
-  flex-direction: column;
-}
-
 
 .mail-info a:hover {
   color: var(--dark-yellow);
@@ -226,6 +218,7 @@
   width: 100%;
 }
 
+/* Footer copyright */
 .footer-copyright {
   background-color: var(--overlay-blue);
   text-align: center;
@@ -244,7 +237,7 @@
   font-weight: 500;
 }
 
-/* Tablet (up to 992px) */
+/* Tablet */
 @media (max-width: 992px) {
   .footerform .inputfield {
     flex-direction: column;
@@ -267,7 +260,7 @@
   }
 }
 
-/* Mobile (up to 768px) */
+/* Mobile */
 @media (max-width: 768px) {
   .footerform {
     display: none;
@@ -275,14 +268,17 @@
 
   .footerdata {
     flex-direction: column;
-    align-items: flex-start; /* Align content to the left */
-    text-align: left; /* Set all text to align left */
-    padding-left: 20px; /* Add left padding for a cleaner look */
+    align-items: flex-start;
+    text-align: left;
+    padding: 2rem 1rem;
   }
 
   .footerdata .col-md-4 {
     margin: 1rem 0;
-    min-width: 100%; /* Full width for columns on smaller screens */
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .middle-data,
@@ -291,31 +287,21 @@
   .socialicon,
   .contact-info {
     text-align: left;
-    align-items: flex-start; /* Aligns to the left */
-    text-align: left;
+    align-items: flex-start;
   }
-
 
   .leftdata .websitename p {
     margin: 0.5rem 0rem;
     width: 100%;
   }
 
-  .footer-page-link::after {
+  .footer-page-link a::after {
     left: 0;
     transform: translateX(0);
   }
 
-  .iconlink {
-    justify-content: flex-start; /* Align icons to the left */
-    gap: 10px;
-  }
-
   .footer-page-link {
-    font-size: 0.9rem; /* Reduced font size for smaller screens */
-  }
-
-  .mail-info .icon {
-    font-size: 2rem;
+    font-size: 0.9rem;
+    line-height: 32px;
   }
 }
