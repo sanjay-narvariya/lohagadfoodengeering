@@ -17,6 +17,11 @@ app.use("/", express.static(path.join(__dirname, "/uploads/images")));
 //   res.sendFile(path.join(__dirname, '/uploads/images', 'index.html'));
 // });
 
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
+
 
 const connectDatabase = require("./db/database");
 
