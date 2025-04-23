@@ -111,7 +111,7 @@ const Contactus = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <p style={{ fontSize: "14.5px", margin: 0 }}>
+                 <p style={{ fontSize: "14.5px", margin: 0, wordBreak: "break-word" }}>
                     www.brajesh9983693560@gmail.com
                   </p>
                 </a>
