@@ -1,12 +1,13 @@
 /* Section 2 image */
 .section2img img {
-  width: 100%; /* Ensure the image is responsive */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
 }
 
+/* Section 1 image fix - note: height should be numeric, not in quotes */
 .section1img img {
-  width: 100%; /* Ensure the image is responsive */
-  height: '50%'; /* Maintain aspect ratio */
+  width: 100%;
+  height: 50%;
 }
 
 /* Section 2 info */
@@ -45,6 +46,7 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
+  align-items: center;
 }
 
 /* List icon */
@@ -86,71 +88,89 @@
 
 /* Responsive Styling */
 @media (max-width: 992px) {
-  .section2img img {
-    width: 100%;
-  }
-
   .section2info {
     padding: 2rem;
   }
 
   .section2title h1 {
-    font-size: 2rem; /* Reduce font size on medium screens */
+    font-size: 2rem;
   }
 
   .section2title p {
-    font-size: 1.125rem; /* Smaller text for better readability */
+    font-size: 1.125rem;
   }
 
   .listdata {
-    flex-direction: column; /* Stack items vertically on smaller screens */
+    flex-direction: column;
     gap: 15px;
+    align-items: center;
+    text-align: center;
   }
 
   .listicon {
-    width: 60px; /* Reduce icon size */
-    height: 50px; /* Adjust for better fit */
+    width: 60px;
+    height: 50px;
   }
 
   .icon {
-    font-size: 1.2rem; /* Adjust icon size for smaller screens */
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 768px) {
   .section2title h1 {
-    font-size: 1.8rem; /* Further reduce font size */
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .section2title p {
+    text-align: center;
   }
 
   .section2list {
-    padding-top: 1.5rem; /* Add some spacing between sections */
+    padding-top: 1.5rem;
   }
 
   .listdata {
-    gap: 20px; /* Add more space between stacked list items */
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .listdes {
+    text-align: center;
   }
 }
 
 @media (max-width: 576px) {
   .section2title h1 {
-    font-size: 1.5rem; /* Smaller text on very small screens */
+    font-size: 1.5rem;
   }
 
   .section2info {
-    padding: 1rem; /* Reduce padding */
+    padding: 1rem;
+    text-align: center;
   }
 
   .listdata {
-  padding: 0 !important;
+    padding: 0 !important;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .listicon {
     width: 50px;
     height: 45px;
-   
   }
 
   .icon {
-    font-size: 1rem; /* Smaller icon size for extra-small screens */
+    font-size: 1rem;
+  }
+
+  .listdes {
+    text-align: center;
   }
 }
