@@ -13,10 +13,10 @@ const Section2 = () => {
   return (
     <>
       <section>
-        <div className="container-fluid" style={{ margin: '20px' }}>
+        <div className="container-fluid" >
           <div className="row">
             <div className="col-md-6">
-              <div className="section1img" style={{ marginTop: '50px' }}>
+              <div className="section1img" style={{ marginTop: '40px', marginRight:'1px' }}>
                 <img
                   src={Truck}
                   alt="Truck"
@@ -39,7 +39,7 @@ const Section2 = () => {
                           <div style={{color:'red', fontSize:'1.5rem'}}>Mohalle ki yaari, Brajesh ki chai sab pe bhaari ! 😄!</div>
                   </p>
                 </div>
-                <div className="section2list" style={{marginTop:'140px'}}>
+                <div className="section2list" style={{marginTop:'130px', marginRight:'1px'}}>
                   <div className="section2img">
                     <img
                       src={Truck1}
