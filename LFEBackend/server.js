@@ -19,7 +19,11 @@ app.use("/", express.static(path.join(__dirname, "/uploads/images")));
 
 app.get("/", (req, res) => {
   res.send("API is running...");
+  res.json({ message: "Data from backend!" });
 });
+
+
+
 
 
 
