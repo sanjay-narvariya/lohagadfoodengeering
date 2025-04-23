@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getData, postData, serverURL } from "../services/FetchNodeAdminServices";
+import { getData, postData } from "../services/FetchNodeAdminServices";
 import { FaTrashAlt } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import jsPDF from 'jspdf';
@@ -9,7 +9,7 @@ export default function Enquiry() {
     const [enquiryList, setEnquiryList] = useState([]);
     const navigate = useNavigate();
 
-const fetchAllEnquiry = async (showAlert = true) => {
+    const fetchAllEnquiry = async (showAlert = true) => {
         try {
             const result = await getData('enquiry/get-all-enquiry');
             if (result.status) {
@@ -25,32 +25,25 @@ const fetchAllEnquiry = async (showAlert = true) => {
         }
     };
 
-    
     useEffect(() => {
         fetchAllEnquiry();
     }, []);
 
-    // 🔁 Refresh page on focus
     useEffect(() => {
-        const handleFocus = () => {
-            fetchAllEnquiry(false); // alert disabled during focus
-        };
-
+        const handleFocus = () => fetchAllEnquiry(false);
         window.addEventListener("focus", handleFocus);
-        return () => {
-            window.removeEventListener("focus", handleFocus);
-        };
+        return () => window.removeEventListener("focus", handleFocus);
     }, []);
 
-    const reversedEnquiries = [...enquiryList].reverse(); // Latest on top
+    const reversedEnquiries = [...enquiryList].reverse();
 
     const enquiryDelete = async (item) => {
         const result = await postData(`enquiry/delete-enquiry/${item}`, {});
         if (result) {
-            alert('Delete enquiry successfully.....');
+            alert('Deleted enquiry successfully.');
             setTimeout(() => navigate('/enquiry'), 2000);
         } else {
-            alert('Not Delete enquiry .....');
+            alert('Failed to delete enquiry.');
         }
         fetchAllEnquiry();
     };
@@ -98,18 +91,18 @@ const fetchAllEnquiry = async (showAlert = true) => {
     };
 
     return (
-        <div className="container mt-5">
-            <div className="card shadow-lg border-0 rounded-lg">
-                <div className="card-header bg-primary text-light d-flex justify-content-between align-items-center">
+        <div className="container-fluid px-2 px-md-4 mt-4">
+            <div className="card shadow border-0 rounded-lg">
+                <div className="card-header bg-primary text-light d-flex flex-wrap justify-content-between align-items-center gap-2">
                     <h5 className="mb-0">Enquiries</h5>
-
-                    <button className="btn btn-danger btn-sm" onClick={deleteAllEnquiries}>
-                        🗑️ Delete All Enquiries
-                    </button>
-
-                    <button className="btn btn-light btn-sm" onClick={downloadPDF}>
-                        📄 Download PDF
-                    </button>
+                    <div className="d-flex gap-2 flex-wrap">
+                        <button className="btn btn-danger btn-sm" onClick={deleteAllEnquiries}>
+                            🗑️ Delete All
+                        </button>
+                        <button className="btn btn-light btn-sm" onClick={downloadPDF}>
+                            📄 Download PDF
+                        </button>
+                    </div>
                 </div>
                 <div className="card-body">
                     <div className="table-responsive">
@@ -127,25 +120,25 @@ const fetchAllEnquiry = async (showAlert = true) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {reversedEnquiries.map((item, index) => {
-                                    const createdAt = new Date(item.createdAt).toLocaleString();
-                                    return (
-                                        <tr key={item._id}>
-                                            <td>{index + 1}</td>
-                                            <td>{item.name || "-"}</td>
-                                            <td>{item.email || "-"}</td>
-                                            <td>{item.phone || "-"}</td>
-                                            <td>{item.address || "-"}</td>
-                                            <td>{item.comment || "-"}</td>
-                                            <td>{createdAt}</td>
-                                            <td>
-                                                <button className="btn btn-sm btn-danger" onClick={() => enquiryDelete(item._id)}>
-                                                    <FaTrashAlt className="fs-5" />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                {reversedEnquiries.map((item, index) => (
+                                    <tr key={item._id}>
+                                        <td>{index + 1}</td>
+                                        <td>{item.name || "-"}</td>
+                                        <td>{item.email || "-"}</td>
+                                        <td>{item.phone || "-"}</td>
+                                        <td>{item.address || "-"}</td>
+                                        <td>{item.comment || "-"}</td>
+                                        <td>{new Date(item.createdAt).toLocaleString()}</td>
+                                        <td>
+                                            <button
+                                                className="btn btn-sm btn-danger"
+                                                onClick={() => enquiryDelete(item._id)}
+                                            >
+                                                <FaTrashAlt className="fs-5" />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
                                 {reversedEnquiries.length === 0 && (
                                     <tr>
                                         <td colSpan="8">No enquiries found.</td>
@@ -155,7 +148,7 @@ const fetchAllEnquiry = async (showAlert = true) => {
                         </table>
                     </div>
                     <p className="text-muted mt-2 d-block d-md-none" style={{ fontSize: '0.9rem' }}>
-                        👉 Swipe left/right to view more columns
+                        👉 Swipe left/right to view full table on mobile
                     </p>
                 </div>
             </div>
